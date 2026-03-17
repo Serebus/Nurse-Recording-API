@@ -16,6 +16,10 @@ This is the API for the Nurse Recording System, built with Hono.
 
 The server will run on http://localhost:3001
 
+## API Documentation
+
+Visit `http://localhost:3001/ui` for interactive API documentation using Swagger UI.
+
 ## Endpoints
 
 The API includes the following endpoints, mirroring the Nurse-Recording-System-RE backend:

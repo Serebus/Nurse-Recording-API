@@ -1,6 +1,40 @@
 import { Hono } from 'hono'
+import { swaggerUI } from '@hono/swagger-ui'
 
 const app = new Hono()
+
+// OpenAPI spec
+const openApiSpec = {
+  openapi: '3.0.0',
+  info: {
+    title: 'Nurse Recording API',
+    version: '1.0.0',
+    description: 'API for Nurse Recording System'
+  },
+  paths: {
+    '/api/Auth/login': {
+      post: {
+        summary: 'User login',
+        responses: {
+          200: { description: 'Success' }
+        }
+      }
+    },
+    '/api/Auth/logout': {
+      post: {
+        summary: 'User logout',
+        responses: {
+          200: { description: 'Success' }
+        }
+      }
+    },
+    // Add more paths as needed
+  }
+}
+
+app.get('/doc', (c) => c.json(openApiSpec))
+
+app.get('/ui', swaggerUI({ url: '/doc' }))
 
 app.get('/', (c) => {
   return c.text('Hello Hono!')
